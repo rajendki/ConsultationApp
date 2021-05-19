@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module AuditConsult
   class Application < Rails::Application
     config.active_job.queue_adapter = :sidekiq
+    config.application_name = 'Online Consultation'
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
