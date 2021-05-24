@@ -10,8 +10,24 @@ module AuditConsult
   class Application < Rails::Application
     config.active_job.queue_adapter = :sidekiq
     config.application_name = 'Online Consultation'
+    config.action_mailer.raise_delivery_errors = true
+      ActionMailer::Base.smtp_settings = {
+  :address        => 'smtp.gmail.com',
+  :domain         => 'mail.google.com',
+  :port           => 587,
+  :user_name      => 'kishorer3196@gmail.com',
+  :password       => 'gomavegeta',
+  :authentication => :plain,
+  :enable_starttls_auto => true
+  }
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
+  allow do
+    origins '*'
+    resource '*', :headers => :any, :methods => [:get, :post, :options]
+  end
+end
 
     # Configuration for the application, engines, and railties goes here.
     #

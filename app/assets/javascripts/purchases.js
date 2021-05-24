@@ -1,9 +1,9 @@
 document.addEventListener("turbolinks:load", function() {
   const public_key = document.querySelector("meta[name='stripe-public-key']").content;
-  document.write("getting public key"+public_key);
+  //document.write("getting public key"+public_key);
   const stripe = Stripe(public_key);
   const elements = stripe.elements();
-  document.write("elements got");
+  //document.write("elements got");
   const style = {
   base: {
     color: '#32325d',
@@ -21,7 +21,7 @@ document.addEventListener("turbolinks:load", function() {
   }
 };
   const cardElement = document.getElementById('card-element');
-      document.write("setting up card");
+//document.write("setting up card");
   if(cardElement != null) {
 
     const card = elements.create('card', {style: style});
